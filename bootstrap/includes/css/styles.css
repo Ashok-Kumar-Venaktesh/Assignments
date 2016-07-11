@@ -48,7 +48,21 @@ Notes:    Hand coded for Wipro Technologies
       padding: 0px;
    }
 
-   
+   .panel{
+      border: solid #eee;
+      height: 330px;
+
+   }
+
+   .panel-heading{
+      background: #eee;
+   }
+   .feature{
+      height: 350px;
+   }
+   p.list-group-itme-text{
+      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+   }
 /* --------------------------------------
    Carousel
    -------------------------------------- */
