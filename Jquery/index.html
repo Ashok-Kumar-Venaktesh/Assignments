@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style type="text/css">
+    #container {
+        text-align: center;
+    }
+    
+    #inputSearch {
+        width: 200px;
+        height: 20px;
+    }
+    
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    
+    td,
+    th {
+        border: 1px solid #dddddd;
+        text-align: center;
+        padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+    
+    button {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+   
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $("button").click(function() {
+            var title = $("#inputSearch").val();
+            var xhttp = new XMLHttpRequest();
+            var urlLink = "http://www.omdbapi.com/?s=";
+            var responseData = {};
+            xhttp.open("GET", urlLink + title, true);
+            xhttp.send();
+            xhttp.onreadystatechange = function() {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    responseData = xhttp.responseText;
+                    //document.getElementById("movieDetails").innerHTML = responseData;
+                    //console.log("Responsible Data", responseData);
+                    var obj = {},
+                        search = {};
+                    obj = JSON.parse(responseData);
+                    search = obj.Search;
+                    var len = search.length;
+
+                    for (var i = 0; i < len; i = i + 1) {
+                        var title = '',
+                            year = '',
+                            poster = '';
+                        title = search[i].Title;
+                        year = search[i].Year;
+                        poster = search[i].Poster;
+
+                        $('table').append(" <tr> <td> " + title + "</td> <td>" + year + "</td> <td><img src=" + poster + " height='64px' width='64px' alt=" + title + "></td> </tr>");
+                        console.log("Title", search[i].Title, len);
+                        console.log("Year", search[i].Year);
+                        console.log("Poster", search[i].Poster);
+                    }
+                }
+            };
+        });
+    });
+    </script>
+    <script src="https://cloud.github.com/downloads/wycats/handlebars.js/handlebars-1.0.0.beta.6.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        <form>
+            <input id="inputSearch" type="text" name="title" />
+        </form>
+        <button> Search </button>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Year</th>
+                <th>Poster</th>
+            </tr>
+        </table>
+    </div>
+</body>
+<p id="movieDetails"></p>
+
+</html>
