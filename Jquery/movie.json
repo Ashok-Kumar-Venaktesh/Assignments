@@ -1,0 +1,65 @@
+{
+    "Search": [{
+        "Title": "Sultan",
+        "Year": "1978",
+        "imdbID": "tt0264051",
+        "Type": "movie",
+        "Poster": "http://ia.media-imdb.com/images/M/MV5BYmM5MGNiYWEtZTY3MS00ODQ2LTgwNzQtNmRkMTEwZWFhYzA0XkEyXkFqcGdeQXVyMjExNjgyMTc@._V1_SX300.jpg"
+    }, {
+        "Title": "Angelique and the Sultan",
+        "Year": "1968",
+        "imdbID": "tt0061357",
+        "Type": "movie",
+        "Poster": "http://ia.media-imdb.com/images/M/MV5BMTQxNjU5MTc0MV5BMl5BanBnXkFtZTcwNTU2MzQyMQ@@._V1_SX300.jpg"
+    }, {
+        "Title": "Mahpeyker - Kösem Sultan",
+        "Year": "2010",
+        "imdbID": "tt1754166",
+        "Type": "movie",
+        "Poster": "http://ia.media-imdb.com/images/M/MV5BZmJmNjc2OWYtYWEyNS00ZjMxLTljOGUtNzM1ZTE2MmNhMDVmXkEyXkFqcGdeQXVyMjc0MjUzMzU@._V1_SX300.jpg"
+    }, {
+        "Title": "Malkoçoglu - Cem Sultan",
+        "Year": "1969",
+        "imdbID": "tt0182881",
+        "Type": "movie",
+        "Poster": "N/A"
+    }, {
+        "Title": "Hürrem Sultan",
+        "Year": "2003",
+        "imdbID": "tt0424656",
+        "Type": "series",
+        "Poster": "http://ia.media-imdb.com/images/M/MV5BMTYzMzM2Njk4Nl5BMl5BanBnXkFtZTYwNDg3Mjc2._V1_SX300.jpg"
+    }, {
+        "Title": "Sultan gelin",
+        "Year": "1974",
+        "imdbID": "tt0264052",
+        "Type": "movie",
+        "Poster": "http://ia.media-imdb.com/images/M/MV5BYzU4MDFlMzAtNmU2Zi00M2Q2LTlmMGMtMjQ0YTI2YjAxMWI3XkEyXkFqcGdeQXVyMjExNjgyMTc@._V1_SX300.jpg"
+    }, {
+        "Title": "Sultan Makami",
+        "Year": "2003–",
+        "imdbID": "tt0381809",
+        "Type": "series",
+        "Poster": "N/A"
+    }, {
+        "Title": "Razia Sultan",
+        "Year": "1983",
+        "imdbID": "tt0152148",
+        "Type": "movie",
+        "Poster": "http://ia.media-imdb.com/images/M/MV5BZDZhOGJhOTYtNzYxNC00ZTk2LWE4ODUtMWFmZTI0ZDYxNWE0XkEyXkFqcGdeQXVyMzU0NzkwMDg@._V1_SX300.jpg"
+    }, {
+        "Title": "The Sword of Tipu Sultan",
+        "Year": "1989–",
+        "imdbID": "tt0366104",
+        "Type": "series",
+        "Poster": "N/A"
+    }, {
+        "Title": "Pir Sultan Abdal",
+        "Year": "1973",
+        "imdbID": "tt0280036",
+        "Type": "movie",
+        "Poster": "http://ia.media-imdb.com/images/M/MV5BZmE3MTEwNDEtNmZkNS00M2ZjLWI2MzAtNGI4MTdkNjAyZTY0XkEyXkFqcGdeQXVyMjExNjgyMTc@._V1_SX300.jpg"
+    }],
+    "totalResults": "96",
+    "Response": "True"
+}

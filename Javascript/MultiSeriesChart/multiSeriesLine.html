@@ -4,47 +4,26 @@
 <head>
     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://getbootstrap.com/examples/justified-nav/justified-nav.css" rel="stylesheet">
-    <style>
-    .axis path {
-        fill: none;
-        stroke: #777;
-        shape-rendering: crispEdges;
-    }
-    
-    .axis text {
-        font-family: Times;
-        font-size: 16px;
-    }
-    
-    .legend {
-        font-size: 14px;
-        font-weight: bold;
-    }
-    </style>
-</head>
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    </head>
 
 <body>
     <div class="container">
-        <div class="jumbotron">
+    <div class="row">
+        <div class="col-xs-12">
             <svg id="visualisation" width="1000" height="500"></svg>
             <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
             <script>
-            var data;
 
+            var data;
             function InitChart() {
                 d3.json("multiSeriesLine.json", function(jsonData) {
-
                     data = jsonData;
-
-
                     var dataGroup = d3.nest()
                         .key(function(d) {
                             return d.Client;
                         })
                         .entries(data);
-
-
-
 
                     console.log(JSON.stringify(dataGroup));
                     console.log(".entries(data)", data);
@@ -59,7 +38,7 @@
                             left: 50
                         },
                         lSpace = WIDTH / dataGroup.length;
-                    xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([d3.min(data, function(d) {
+                        xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([d3.min(data, function(d) {
                             return d.Year;
                         }), d3.max(data, function(d) {
                             return d.Year;
@@ -128,16 +107,13 @@
                             })
                             .text(d.key);
                     });
-
                 });
-
-
             }
-
             InitChart();
             </script>
+            <link href="../css/multiSeriesLine.css" rel="stylesheet">     
         </div>
+</div>
     </div>
 </body>
-
 </html>

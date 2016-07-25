@@ -1,13 +1,1 @@
-[{
-    "key": "India",
-    "Rural Population": 4144.733000000001,
-    "Urban Population": 1355.267
-}, {
-    "key": "Bangladesh",
-    "Rural Population": 4525.949,
-    "Urban Population": 974.0509999999998
-}, {
-    "key": "China",
-    "Rural Population": 3940.9330000000004,
-    "Urban Population": 1559.067
-}]
+[{"key":"India","Rural Population":4144.733000000001,"Uraban Population":1355.267},{"key":"Bangladesh","Rural Population":4525.949,"Uraban Population":974.0509999999998},{"key":"India","Rural Population":3940.9330000000004,"Uraban Population":1559.067}]

@@ -6,35 +6,58 @@ Description: Creates 3 json files required to plot graph given in the asssignmen
 //Variable Declaration
 var fs = require('fs'),
     readline = require('readline'),
-    stream = require('stream');
-var data;
-var instream = fs.createReadStream('./Indicators.csv');
+    stream = require('stream'),
+    data,
+    instream = fs.createReadStream('./Indicators.csv'),
+    year = 1960,
+    ruralPopulation,
+    urbanPopulation,
+    urbanPopulationGrowth,
+    totalGrowth,
+    tempData = {},
+    jsonData = [],
+    jsonData1 = [],
+    jsonData2 = [],
+    population = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+    countryList = ['India', 'Bangladesh', 'China'],
+    optio = new Object();
+
 var outstream = new stream;
 outstream.readable = true;
 outstream.writable = true;
-var i = 1960;
-var ruralPopulation;
-var urbanPopulation;
-var urbanPopulationGrowth;
-var totalGrowth;
-var year;
-var tempData = {};
-var jsonData = [];
-var tempData1 = {};
-var tempData2 = {};
-var jsonData1 = [];
-var jsonData2 = [];
-var population = [0.0, 0.0, 0.0,0.0,0.0,0.0,0.0,0.0,0.0];
-var countryList = ['India','Bangladesh','China'];
 var rl = readline.createInterface({
     input: instream,
     output: outstream,
     terminal: false
 });
-//options 
-var optio = new Object();
+
+// regex options 
 optio.flag = "a";
 optio.encoding = "utf8"
+
+var StackedPush = function(value1, value2, value3) {
+    tempData["key"] = value1;
+    tempData["Rural Population"] = value2;
+    tempData["Uraban Population"] = value3;
+    jsonData2.push(tempData);
+    tempData = {};
+}
+
+var JsonPush = function(coloumnName, fileName, value) {
+    tempData["Year"] = year;
+    tempData["Client"] = coloumnName;
+    tempData["Growth"] = value;
+    fileName.push(tempData);
+    tempData = {};
+}
+
+var LoopingCountryList = function(displacement, countryName, value) {
+        countryList.forEach(function(currentValue, index) {
+            if (countryName == currentValue) {
+                population[parseInt(index) + parseInt(displacement)] = parseFloat(population[parseInt(index) + parseInt(displacement)]) + parseFloat(value);
+            }
+        })
+    }
 
 
 //readline one by one
@@ -45,104 +68,34 @@ rl.on('line', function(line) {
     //Get the rural population data
     if (arr[2] == undefined) {
 
-    } else if (arr[4] == i && arr[2].match(/Rural population \(\% of total population\)/)) {
-        
+    } else if (arr[4] == year && arr[2].match(/Rural population \(\% of total population\)/)) {
         if (arr[0] == 'India') {
-            
-            ruralPopulation = arr[5];
-            tempData["Growth"] = ruralPopulation;
-            tempData["Year"] = i;
-            tempData["Client"] = "Rural Population (% of total Population)";
-            jsonData.push(tempData);
-            tempData = {};
+            JsonPush("Rural Population (% of total Population)", jsonData, arr[5]);
         }
-
-        for (j = 0; j < countryList.length; j = j + 1) {
-
-            if (arr[0] == countryList[j]) {        
-                population[j] = parseFloat(population[j]) + parseFloat(arr[5]);        
-            }            
-        }        
-
+        LoopingCountryList(0, arr[0], arr[5]);
     }
 
-
     // Get the Urban population (%total)
-    if (arr[2] == undefined) {
-
-    } else if (arr[4] == i && arr[2].match(/Urban population \(\% of total\)/)) {
+    else if (arr[4] == year && arr[2].match(/Urban population \(\% of total\)/)) {
         if (arr[0] == 'India') {
-            console.log(arr[0], arr[2], arr[4], i);
-            urbanPopulation = arr[5];
-
-            tempData["Year"] = i;
-            tempData["Client"] = "Uraban Population (% of total Population)";
-            tempData["Growth"] = urbanPopulation;
-            jsonData.push(tempData);
-            tempData = {};
-            
+            JsonPush("Uraban Population (% of total Population)", jsonData, arr[5]);
         }
-        for (j = 0; j < countryList.length; j = j + 1) {
-
-            if (arr[0] == countryList[j]) {            
-                population[j+3] = parseFloat(population[j+3]) + parseFloat(arr[5]);            
-            }
-            
-        }
-
+        LoopingCountryList(3, arr[0], arr[5]);
     }
 
     // Get the Urban population growth
-    if (arr[2] == undefined) {
-
-    } else if (arr[4] == i && arr[2].match(/Urban population growth \(annual \%\)/)) {
-
-        if (arr[0] == 'India') {
-            console.log(arr[0], arr[2], arr[4], i);
-            urbanPopulationGrowth = arr[5];
-            tempData1["Client1"] = "Urban Population Growth (% total Population)";
-            year = i;
-            tempData1["Growth"] = urbanPopulationGrowth;
-            tempData1["Year"] = year;
-            //console.log(urbanPopulationGrowth, year);        
-            i = i + 1;
-            jsonData1.push(tempData1);
-            tempData1 = {};
-        }
-
+    else if (arr[4] == year && arr[2].match(/Urban population growth \(annual \%\)/) && arr[0] == 
+    'India') {        
+            JsonPush("Urban Population Growth (% total Population)", jsonData1, arr[5]);
+            year = year + 1;        
     }
-
-
 });
 
 //At the end of reading csv file
 rl.on('close', function() {
-
-    //Display the values
-    console.log("India, Rural Population", population[0]);
-    console.log("Bangladesh, Rural Population", population[1]);
-    console.log("China, Rural Population", population[2]);
-    console.log("India, Urban Population", population[3]);
-    console.log("Bangladesh, Urban Population", population[4]);
-    console.log("China, Urban Population", population[5]);
-
-    tempData2["key"] = "India";
-    tempData2["Rural Population"] = population[0];
-    tempData2["Urban Population"] = population[3];
-    jsonData2.push(tempData2);
-    tempData2 = {};
-
-    tempData2["key"] = "Bangladesh";
-    tempData2["Rural Population"] = population[1];  
-    tempData2["Urban Population"] = population[4];
-    jsonData2.push(tempData2);
-    tempData2 = {};
-
-    tempData2["key"] = "China";
-    tempData2["Rural Population"] = population[2];
-    tempData2["Urban Population"] = population[5];
-    jsonData2.push(tempData2);
-    tempData2 = {};
+    StackedPush("India", population[0], population[3]);
+    StackedPush("Bangladesh", population[1], population[4]);
+    StackedPush("India", population[2], population[5]);
 
     //Generate json output files
     fs.writeFileSync("./MultiSeriesChart/multiSeriesLine.json", JSON.stringify(jsonData), optio);
