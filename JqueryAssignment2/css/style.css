@@ -1,39 +1,30 @@
 
-    button.btn.btn-default {
-        margin-bottom: 10px;
-        margin-top: 10px;
-    }
-    
+
+
     #container {
         text-align: center;
     }
-    
-    #searchInput {
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
-    
-    button {
-        margin-bottom: 10px;
-    }
-    
+
+
     table {
         font-family: arial, sans-serif;
         border-collapse: collapse;
         width: 100%;
+            margin-top: 20px;
+
     }
-    
+
     td,
     th {
         border: 1px solid #dddddd;
         text-align: center;
         padding: 8px;
     }
-    
+
     tr:nth-child(even) {
         background-color: #dddddd;
     }
-    
+
     button {
         margin-top: 5px;
         margin-bottom: 5px;
@@ -41,8 +32,11 @@
         .container {
         text-align: center;
     }
-    
+
     h2 {
         font-weight: bold;
     }
-    
+    #tbUser th{
+        text-align: center;
+    }
+
