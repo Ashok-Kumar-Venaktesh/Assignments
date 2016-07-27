@@ -5,24 +5,29 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="includes/css/bootstrap-glyphicons.css" rel="stylesheet">
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <script src="js/script.js"></script>
+    <!--Custom Styles -->
     <link rel="stylesheet" type="text/css" href="css/Paginatestyle.css" media="screen" />
+    <link href="css/style.css" rel="stylesheet">
+
     <title>Movie Finder</title>
 </head>
 
 <body>
+
     <div class="container">
         <h2> Movie Finder</h2>
+        
+
         <div class="col-sm-12">
-            <button id="searchButton" type="submit" class="btn btn-success"><span class="glyphicon glyphicon-eye-open">  Click here to view</span></button>
+            <button id="searchButton" type="submit" class="btn btn-success"><span class="glyphicon glyphicon-eye-open">  All Movies</span></button>
         </div>
+
+        
         <div class="col-sm-12 table-container">
             <table id="tbUser">
                 <tr>
@@ -33,7 +38,7 @@
                     <th>Opitons</th>
                 </tr>
             </table>
-            <form>
+            <form id="formHeader">
                 <input type="text" placeholder="Imob Number" id="imobInput">
                 <input type="text" placeholder="Title" id="titleInput">
                 <input type="text" placeholder="Year" id="yearInput">
@@ -41,15 +46,23 @@
                 <button id="submitButton" type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
+
+        
         <div class="col-sm-12">
             <button id="addButton" type="submit" class="pull-right btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Add</button>
         </div>
+
+        
         <div id="paginationdemo" class="demo">
             <div id="demo5" class="pagedemo _current" style=""></div>
         </div>
-    </div>
-    <link href="css/style.css" rel="stylesheet">
-    <script src="jquery.paginate.js" type="text/javascript"></script>
-</body>
 
+
+    </div>
+
+    <!-- Add custom javascript files -->
+    <script src="jquery.paginate.js" type="text/javascript"></script>
+    <script src="js/script.js"></script>
+
+</body>
 </html>
